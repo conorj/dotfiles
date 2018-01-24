@@ -1,0 +1,33 @@
+.ruby-version
+
+# ignore Gemfile lock, keep actual Gemfile
+Gemfile.lock
+
+# ignore tag files used by vim
+tags
+*.tags
+
+# ignore temp vim files
+*.swp
+
+# ignore webdev files I use across multiple projects
+dump.rdb
+tests/cURL
+tests/Coverage
+tests/PHPMetrics
+full_reseed.sh
+
+# node
+node_modules
+
+# ignore phpdoc files
+docs
+
+# ignore temp files for CSV/Excel etc
+.~lock.*
+
+# ignore any TODO files I have lying around
+TODO
+
+# ignore any git_stats folders
+git_stats

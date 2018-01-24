@@ -1,0 +1,45 @@
+# laravel
+alias art='php artisan'
+alias sart='sudo php artisan'
+alias art.migrate.new='php artisan make:migration'
+alias art.migrate.run='php artisan migrate'
+alias behat='nocorrect behat'
+alias tinker='php artisan tinker'
+alias reseed='php artisan migrate:refresh --seed'
+alias reseed.test='php artisan migrate:refresh --seed --env=test'
+alias ctags.l5='ctags -R --languages=php app bootstrap config database resources routes tests'
+
+# docker
+alias dco='docker-compose'
+alias dps='docker ps'
+alias d.up='docker-compose -f docker-compose.yml -f docker-compose.override.yml up'
+alias d.down='docker-compose down'
+alias d.ssh='docker-compose exec workspace bash'
+alias di.ls='docker image ls'
+alias dn.ls='docker network ls'
+alias dv.ls='docker volume ls'
+
+# cd
+alias cdg='cd ~/GIT'
+
+# composer
+alias composer='~/bin/composer.phar'
+alias cget='curl -s https://getcomposer.org/installer | php'
+
+# general programming
+alias ctags.rails='ctags -R --languages=ruby --exclude=.git --exclude=log .'
+alias ctags.php='ctags -R --languages=php --exclude=.git --exclude=log .'
+alias phpcov='phpunit --coverage-html tests/Coverage'
+alias pun='phpunit'
+alias puf='phpunit --filter='
+
+# webdev tools
+alias httpd.restart='sudo service httpd restart'
+alias mariadb.restart='systemctl restart mariadb'
+alias pgsql='sudo -u postgres psql'
+alias vi=vim
+alias chrome_for_charles='google-chrome --proxy-server=http://localhost:8888'
+
+# misc
+alias cl=clear
+alias get.ip='ifconfig | grep -A1 wlp3s | awk '\''{print $2}'\'' | tail -n1'
