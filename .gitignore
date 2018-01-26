@@ -31,3 +31,6 @@ TODO
 
 # ignore any git_stats folders
 git_stats
+
+#docker
+docker-compose.override.yml

@@ -1,0 +1,27 @@
+:
+
+# install new laravel app in docker container
+la5.new() {
+  DEFAULT='.'
+  TARGET=${1-$DEFAULT}
+  DOCKER_LOCAL_ENV_URL='https://github.com/conorj/docker-local-php-env/archive/master.zip'
+  LARAVEL_URL='https://github.com/laravel/laravel/archive/master.zip'
+
+  echo "Fetching and installing docker files for local dev"
+  wget -O master.zip $DOCKER_LOCAL_ENV_URL && unzip -j -d $TARGET/.docker master.zip
+  rm master.zip
+
+  echo "Fetching and installing generic laravel installation"
+  wget -O master.zip $LARAVEL_URL && unzip -d $TARGET master.zip
+  mv $TARGET/laravel-master/* $TARGET
+  mv $TARGET/laravel-master/.* $TARGET
+  rmdir $TARGET/laravel-master
+  rm master.zip
+
+  cd $TARGET
+  cp .env.example .env
+  docker run --rm -v $(pwd):/app composer/composer install
+  php artisan key:generate
+}
+
+la5.new test_app
