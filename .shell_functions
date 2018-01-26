@@ -23,5 +23,3 @@ la5.new() {
   docker run --rm -v $(pwd):/app composer/composer install
   php artisan key:generate
 }
-
-la5.new test_app
