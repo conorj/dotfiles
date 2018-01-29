@@ -43,6 +43,7 @@ p.new() {
   rm master.zip
 
   cd $TARGET
-  mv docker-local-php-env-master/{.docker,public} .
+  mv docker-local-php-env-master/.docker .
   rm -rf docker-local-php-env-master
+  mkdir public
 }
