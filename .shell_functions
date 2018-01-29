@@ -7,6 +7,10 @@ la5.new() {
   DOCKER_LOCAL_ENV_URL='https://github.com/conorj/docker-local-php-env/archive/master.zip'
   LARAVEL_URL='https://github.com/laravel/laravel/archive/master.zip'
 
+  if [ ! -d $TARGET ]; then
+    mkdir $TARGET
+  fi
+
   echo "Fetching and installing docker files for local dev"
   wget -O master.zip $DOCKER_LOCAL_ENV_URL && unzip -j -d $TARGET/.docker master.zip
   rm master.zip
@@ -22,4 +26,23 @@ la5.new() {
   cp .env.example .env
   docker run --rm -v $(pwd):/app composer/composer install
   php artisan key:generate
+}
+
+# install new php app in docker container
+p.new() {
+  DEFAULT='.'
+  TARGET=${1-$DEFAULT}
+  DOCKER_LOCAL_ENV_URL='https://github.com/conorj/docker-local-php-env/archive/master.zip'
+
+  if [ ! -d $TARGET ]; then
+    mkdir $TARGET
+  fi
+
+  echo "Fetching and installing docker files for local dev"
+  wget -O master.zip $DOCKER_LOCAL_ENV_URL && unzip -d $TARGET master.zip
+  rm master.zip
+
+  cd $TARGET
+  mv docker-local-php-env-master/{.docker,public} .
+  rm -rf docker-local-php-env-master
 }
