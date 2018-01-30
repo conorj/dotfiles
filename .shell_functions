@@ -28,6 +28,26 @@ la5.new() {
   php artisan key:generate
 }
 
+# install new Symfony4 app in docker container
+sy4.new() {
+  DEFAULT='.'
+  TARGET=${1-$DEFAULT}
+  DOCKER_LOCAL_ENV_URL='https://github.com/conorj/docker-local-php-env/archive/master.zip'
+
+  if [ ! -d $TARGET ]; then
+    mkdir $TARGET
+  fi
+
+  # install symfony files first as it needs empty folder
+  docker run --rm -v $(pwd):/app composer create-project symfony/skeleton $TARGET
+
+  echo "Fetching and installing docker files for local dev"
+  wget -O master.zip $DOCKER_LOCAL_ENV_URL && unzip -j -d $TARGET/.docker master.zip
+  rm master.zip
+
+  cd $TARGET
+}
+
 # install new php app in docker container
 p.new() {
   DEFAULT='.'
