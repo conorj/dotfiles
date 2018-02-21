@@ -1,8 +1,7 @@
 :
 
-setUpZsh()
-
-setUpDocker()
+# add vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 declare -a FILES_TO_SYMLINK=(
 .bashrc
@@ -57,3 +56,7 @@ setUpDocker() {
   # Optional - verify install
   sudo docker run hello-world
 }
+
+setUpZsh
+
+setUpDocker
